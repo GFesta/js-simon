@@ -5,6 +5,7 @@ $(document).ready(function() {
     var numeroCasuale;
     var numeroPrompt;
 
+    //genero 5 numeri casuali
     for (var i = 0; i < 5; i++) {
         numeroCasuale = genNumeriCasuali(1, 50);
         console.log(numeroCasuale);
@@ -13,9 +14,12 @@ $(document).ready(function() {
     console.log(listaNumeriCasuali);
     alert("Cerca di memorizzare questi cinque numeri: " + listaNumeriCasuali);
 
+    //timer - dopo 30 secondi, richiedo di inserire i numeri ricordati
     setTimeout(function() {
     for (var i = 0; i < 5; i++) {
         numeroPrompt = parseInt(prompt("Inserisci di seguito i numeri che ricordi"));
+
+        //analizzo i numeri inseriti
             for (var f = 0; f < listaNumeriCasuali.length; f++) {
                 if (numeroPrompt == listaNumeriCasuali[f]) {
                 listaNumeriPrompt.push(numeroPrompt);
