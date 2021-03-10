@@ -1,3 +1,11 @@
+// Un alert espone 5 numeri casuali.
+// Da li parte un timer di 30 secondi.
+// Dopo 30 secondi l'utente deve inserire un prompt
+// alla volta i numeri che ha visto precedentemente.
+// Dopo che sono stati inseriti i 5 numeri, il software
+// dice quanti e quali dei numeri da indovinare sono
+// stati individuati.
+
 $(document).ready(function() {
 
     var listaNumeriCasuali = [];
@@ -36,4 +44,46 @@ $(document).ready(function() {
 //richiamo o invoco la funzione  "genNumeriCasuali"
 function genNumeriCasuali(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
+}
+
+//-------------------------------------------------------------------
+//ALTRA SOLUZIONE
+var rndNumber = [];
+var min = 1;
+var max = 100;
+
+while (rndNumber.length < 5) {
+    var newRandomNumber = getRndInteger(min,max);
+
+    if (!rndNumber.includes(newRandomNumber ) ) {
+        rndNumber.push(newRandomNumber);
+    }
+}
+alert(rndNumber);
+
+setTimeout(function() {
+    var userNumbers = [];
+
+    while (userNumbers.length < 5) {
+        var newUserNumber = parseInt(prompt("inserisci un numero"));
+
+        if (userNumbers.includes(newUserNumber) == false) {
+            userNumbers.push(newUserNumber);
+        }
+    }
+    var indovinati = [];
+
+    for (var i = 0; i < userNumbers.length; i++) {
+        if (rndNumbers.includes(userNumbers[i]))
+        indovinati.push(userNumbers[i]);
+    }
+
+    alert("hai ricordato" + indovinati.length + "numeri che sono" +indovinati);
+
+
+}, 5000);
+
+//FUNZIONI
+function getRndInteger(min,max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
